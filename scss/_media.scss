@@ -1,0 +1,6 @@
+@media (max-width: 567px) {
+  .container {width: 100%;align-items: center;}
+  .progress__bar {align-items: center;flex-direction: column;}
+  .diagram { margin-right: 0;margin-bottom: 80px; }
+  .control__element:not(:first-child) {margin-top: 20px;}
+}

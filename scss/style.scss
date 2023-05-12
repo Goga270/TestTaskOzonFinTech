@@ -1,0 +1,107 @@
+@import "vars";
+* {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+
+.checkbox { display: none; }
+/* Кастомный чекбокс и лейбл центрируем по вертикали. Если вам это не требуется, то вы можете убрать свойство vertical-align: middle из данного правила, но свойство display: inline-block обязательно должно быть */
+.checkbox-custom, .label { display: inline-block; vertical-align: middle; }
+/* Если реальный чекбокс у нас отмечен, то тогда добавляем данный признак и к нашему кастомному чекбоксу  */
+.checkbox:checked + .switch-btn:after {
+  left: 22px;
+}
+.checkbox:checked + .switch-btn {
+  background: $color-main;
+}
+
+.switch-btn {
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+  border-radius: 15px;
+  background: $color-third;
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 300ms;
+  &:after {
+    content: "";
+    height: 25px;
+    width: 25px;
+    border-radius: 17px;
+    background: #fff;
+    top: 2.5px;
+    left: 3px;
+    transition-duration: 300ms;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.container {
+  width: 568px;
+  margin: auto;
+  padding: 40px; box-sizing: border-box;
+  display: flex;justify-content: center;
+}
+
+.progress {
+  width: 100%;
+  &__title {font-size: 16px; font-weight: 600;}
+  &__bar {display: flex;justify-content: center;}
+}
+
+.diagram {
+  margin-right: 80px;
+  & svg {
+    width: 150px;height: 150px;
+
+    & circle:nth-child(1) {
+      stroke-width: 3;
+      fill: #FFFFFF;
+      stroke: $color-second;
+    }
+    & circle:nth-child(2) {
+      stroke-width: 3;
+      fill: none;
+      stroke: $color-main;
+     /* stroke-linecap: round;*/
+      transform: rotate(-90deg);
+      transform-origin: center center;
+      stroke-dasharray: 60 100;
+      transition-duration: 600ms;
+    }
+  }
+}
+.control {
+  display: flex;flex-direction: column;justify-content: space-between;
+  &__element {
+    display: flex;align-items: center;
+
+    & p {margin: 0 0 0 20px;font-weight: 600;font-size: 16px;}
+  }
+  &__input-value {
+    width: 50px;
+    display: block; border: 2px solid black;border-radius: 20px;outline: none;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 16px;font-weight: 600;
+  }
+  &__btn {
+    width: 100%;
+    background: transparent;
+    border-radius: 20px;border: 2px solid #bfbfbf;
+    outline: none;
+    padding: 5px 10px;
+    text-align: center;
+    cursor: pointer;
+    &:hover {background: $color-main;color: #FFFFFF;border: 2px solid $color-main;}
+  }
+}
+
+.hidden {opacity: 0;animation: 0.5s fade-away ease-out}
+
+@import "media";
