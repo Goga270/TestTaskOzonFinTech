@@ -12,7 +12,7 @@ const innerHtml = `
         </div>
         <div class="control">
             <div class="control__element">
-                <input type="number" class="control__input-value" id="input_value">
+                <input type="text" class="control__input-value" id="input_value">
                 <p>Value</p>
             </div>
             <div class="control__element">
@@ -85,8 +85,9 @@ export default class Progress extends HTMLElement {
     }
 
     updateProgress = (val) => {
-        if (this.progress)
+        if (this.progress && !isNaN(val)) {
             this.progress.style.strokeDasharray = val + " 100";
+        }
     };
 
     toggleAnimation = (value) => {
